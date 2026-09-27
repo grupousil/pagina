@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ================= APARTADO 1 ================= */
+.seccion-inicio {
+    min-height: 100vh;
+    padding: 30px 15px;
+    position: relative;
+    background: radial-gradient(circle, #87CEEB 20%, #000000 85%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+/* Encabezado superior izquierdo */
+.encabezado {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    z-index: 20;
+}
+
+.encabezado h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Contenedor relativo para el botón superpuesto */
+.contenedor-imagen-principal {
+    position: relative;
+    margin-top: 80px;
+    display: inline-block;
+    z-index: 10;
+    width: 100%;
+    max-width: 400px; /* Tamaño máximo en pantallas grandes */
+    text-align: center;
+}
+
+/* Foto principal chica */
+.imagen-central-chica {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Cuadro transparente 'entra aca' superpuesto */
+.btn-entra-superpuesto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 14px 28px;
+    border: 2px solid #ffffff;
+    background-color:rgba(255, 255, 255, 0);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    z-index: 30;
+}
+
+.btn-entra-superpuesto:hover {
+    background-color: #ffffff;
+    color:red;
+    font-size: 1.4rem;
+    border-color: #ffffff;
+}
+
+/* GALERÍA HORIZONTAL DE FOTOS */
+.galeria-horizontal {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 1100px;
+    flex-wrap: wrap; /* Permite que las fotos se acomoden si la pantalla es estrecha */
+}
+
+.foto-animada {
+    flex: 1;
+    min-width: 140px;
+    max-width: 250px;
+}
+
+.foto-animada img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.foto-animada.oculto img {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.foto-animada.visible img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= APARTADO 2 ================= */
+.seccion-galeria {
+    min-height: 100vh;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 60px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-galeria h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.cuadricula-fotos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
+    gap: 15px;
+    max-width: 1000px;
+    width: 160%;
+}
+
+.foto-card {
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.foto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+.foto-card:hover {
+    transform: scale(1.05);
+}
+
+/* Ventana informativa (Modal) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.oculto {
+    display: none;
+}
+
+.contenido-modal {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 85%;
+    position: relative;
+    border-left: 6px solid #87CEEB;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.contenido-modal h3 {
+    margin-bottom: 12px;
+    color: #111;
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+}
+
+.texto-final {
+    font-size: 3.8rem;
+    font-weight: bold;
+    margin-top: 50px;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+/* ================= AJUSTES PARA MÓVILES (TELÉFONOS/CELULARES) ================= */
+@media (max-width: 768px) {
+    /* Ajustes del primer apartado */
+    .encabezado h1 {
+        font-size: 1.5rem; /* Tamaño de título cómodo para pantallas chicas */
+    }
+
+    .btn-entra-superpuesto {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .btn-entra-superpuesto:hover {
+        font-size: 1.15rem;
+    }
+
+    .galeria-horizontal {
+        gap: 12px;
+    }
+
+    .foto-animada {
+        min-width: 45%; /* Muestra 2 fotos por fila en el scroll de celulares */
+    }
+
+    .foto-animada img {
+        height: 140px;
+    }
+
+    /* Ajustes del segundo apartado */
+    .cuadricula-fotos {
+        grid-template-columns: repeat(2, 1fr); /* Pasa a 2 columnas (4 filas de 2 fotos) */
+        gap: 12px;
+    }
+
+    .foto-card img {
+        height: 130px;
+    }
+
+    .texto-final {
+        font-size: 2.8rem; /* Tamaño adaptado para móviles */
+        margin-top: 40px;
+    }
+}
+
+/* Para pantallas de celulares muy pequeños (menos de 480px) */
+@media (max-width: 480px) {
+    .foto-animada {
+        min-width: 100%; /* Las fotos del scroll se leen una por una ocupando el ancho */
+    }
+
+    .foto-animada img {
+        height: 180px;
+    }
+}

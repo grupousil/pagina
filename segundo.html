@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Tí - Galería</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="seccion-galeria">
+        <h2>MOMENTOS</h2>
+
+        <div class="cuadricula-fotos">
+            <!-- PRIMERA FILA (4 fotos chicas) -->
+            <div class="foto-card" data-mensaje="FUE MUCHO PODER VER LO CANSADA QUE ESTABAS Y 
+            AUN ASI SEGUIR, UN MOMENTO QUE JAMAS OLVIDARE">
+                <img src="foto2.jpg" alt="Foto 1">
+            </div>
+            <div class="foto-card" data-mensaje="UNA DE LAS PRIMERAS FOTOS QUE ME MANDASTE, CON EL CABELLO
+            SUELTO Y TÚ YA SABES QUE OPINO DE ESO.">
+                <img src="foto 3.jpg" alt="Foto 2">
+            </div>
+            <div class="foto-card" data-mensaje="LA PRIMERA VEZ QUE PUDIMOS DORMIR JUNTOS, DONDE PASAMOS MUCHAS COSAS.">
+                <img src="foto 4.jpg" alt="Foto 3">
+            </div>
+            <div class="foto-card" data-mensaje="UNO DE LAS VECES QUE VENIAS , UNA ESPECIAL PORQUE FUE UNA DE LAS PRIMERAS
+            FOTOS QUE NOS TOMAMOS. ">
+                <img src="foto 7.jpg" alt="Foto 4">
+            </div>
+
+            <!-- SEGUNDA FILA (4 fotos chicas abajo) -->
+            <div class="foto-card" data-mensaje="EL PRIMER REGALO QUE ME HICISTE PARA PAREJAS, LAMENTO QUE SE ME CAYERA EL COSITO ESE.">
+                <img src="foto 1.jpg" alt="Foto 5">
+            </div>
+            <div class="foto-card" data-mensaje="NO ME ARREPIENTO DE DARTE ESE ANILLO, ESPERO QUE LO TENGAS SIEMPRE.">
+                <img src="foto 10.jpg" alt="Foto 6">
+            </div>
+            <div class="foto-card" data-mensaje="UNA DE LAS ULTIMAS FOTOS QUE TUVIMOS EN EL TRABAJO, SIMPLEMENTE BONITO.">
+                <img src="foto 5.jpg" alt="Foto 7">
+            </div>
+            <div class="foto-card" data-mensaje="CUANDO ESTUVIMOS EN ARCHIVOS, CUANDO LA GENTE NO MOLESTABA TANTO.">
+                <img src="foto 9.jpg" alt="Foto 8">
+            </div>
+        </div>
+
+        <!-- Ventana tipo información al hacer clic -->
+        <div id="modal-informacion" class="modal oculto">
+            <div class="contenido-modal">
+                <span id="cerrar-modal" class="btn-cerrar">&times;</span>
+                <h3>SOLO PARA TI</h3>
+                <p id="texto-mensaje">Aquí se muestra el texto configurado.</p>
+            </div>
+        </div>
+
+        <!-- Texto grande en la parte inferior -->
+        <div class="texto-final">
+            PARA TI MI AMOR 
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
