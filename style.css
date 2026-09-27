@@ -1,20 +1,29 @@
-* {
+/* Restablecimiento global seguro para evitar desbordamientos */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
+/* Bloquea estrictamente el desplazamiento/deslizado horizontal en móviles */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 /* ================= APARTADO 1 ================= */
 .seccion-inicio {
     min-height: 100vh;
+    width: 100%;
     padding: 30px 15px;
     position: relative;
     background: radial-gradient(circle, #87CEEB 20%, #000000 85%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden; /* Evita desbordamiento horizontal */
 }
 
 /* Encabezado superior izquierdo */
@@ -37,8 +46,8 @@
     margin-top: 80px;
     display: inline-block;
     z-index: 10;
-    width: 100%;
-    max-width: 400px; /* Tamaño máximo en pantallas grandes */
+    width: 90%;
+    max-width: 400px;
     text-align: center;
 }
 
@@ -59,7 +68,7 @@
     transform: translate(-50%, -50%);
     padding: 14px 28px;
     border: 2px solid #ffffff;
-    background-color:rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
     color: #ffffff;
     text-decoration: none;
     font-size: 1.2rem;
@@ -73,12 +82,12 @@
 
 .btn-entra-superpuesto:hover {
     background-color: #ffffff;
-    color:red;
+    color: #000000;
     font-size: 1.4rem;
     border-color: #ffffff;
 }
 
-/* GALERÍA HORIZONTAL DE FOTOS */
+/* GALERÍA HORIZONTAL DE FOTOS (APARTADO 1) */
 .galeria-horizontal {
     margin-top: 70px;
     display: flex;
@@ -87,7 +96,7 @@
     gap: 15px;
     width: 100%;
     max-width: 1100px;
-    flex-wrap: wrap; /* Permite que las fotos se acomoden si la pantalla es estrecha */
+    flex-wrap: wrap;
 }
 
 .foto-animada {
@@ -115,15 +124,18 @@
     transform: translateY(0);
 }
 
-/* ================= APARTADO 2 ================= */
+/* ================= APARTADO 2 (SEGUNDO HTML) ================= */
 .seccion-galeria {
     min-height: 100vh;
+    width: 100%;
+    max-width: 100vw; /* Asegura que la sección no se extienda más allá del marco */
     background-color: #111111;
     color: #ffffff;
     padding: 60px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .seccion-galeria h2 {
@@ -133,13 +145,14 @@
 
 .cuadricula-fotos {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas por defecto */
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Evita que los elementos se desborden */
     gap: 15px;
-    max-width: 1000px;
-    width: 160%;
+    max-width: 900px;
+    width: 100%;
 }
 
 .foto-card {
+    width: 100%;
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
@@ -148,7 +161,7 @@
 
 .foto-card img {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
     display: block;
     border-radius: 8px;
@@ -209,13 +222,13 @@
     margin-top: 50px;
     text-transform: lowercase;
     text-align: center;
+    word-wrap: break-word; /* Evita que el texto rompa el ancho en pantallas pequeñas */
 }
 
-/* ================= AJUSTES PARA MÓVILES (TELÉFONOS/CELULARES) ================= */
+/* ================= AJUSTES ESPECÍFICOS PARA MÓVILES ================= */
 @media (max-width: 768px) {
-    /* Ajustes del primer apartado */
     .encabezado h1 {
-        font-size: 1.5rem; /* Tamaño de título cómodo para pantallas chicas */
+        font-size: 1.5rem;
     }
 
     .btn-entra-superpuesto {
@@ -232,17 +245,19 @@
     }
 
     .foto-animada {
-        min-width: 45%; /* Muestra 2 fotos por fila en el scroll de celulares */
+        min-width: calc(50% - 12px); /* Ajuste preciso de 2 fotos por fila sin salir del borde */
+        max-width: 100%;
     }
 
     .foto-animada img {
         height: 140px;
     }
 
-    /* Ajustes del segundo apartado */
+    /* En móviles se configuran exactamente 2 columnas sin desbordamiento */
     .cuadricula-fotos {
-        grid-template-columns: repeat(2, 1fr); /* Pasa a 2 columnas (4 filas de 2 fotos) */
-        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
     }
 
     .foto-card img {
@@ -250,15 +265,14 @@
     }
 
     .texto-final {
-        font-size: 2.8rem; /* Tamaño adaptado para móviles */
-        margin-top: 40px;
+        font-size: 2.5rem;
+        margin-top: 35px;
     }
 }
 
-/* Para pantallas de celulares muy pequeños (menos de 480px) */
 @media (max-width: 480px) {
     .foto-animada {
-        min-width: 100%; /* Las fotos del scroll se leen una por una ocupando el ancho */
+        min-width: 100%;
     }
 
     .foto-animada img {
